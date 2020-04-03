@@ -14,5 +14,13 @@ public class MyClassLoader {
         System.out.println(parent.getClass().getName());
        /* ClassLoader pp = parent.getParent();
         System.out.println(pp.getClass().getName());*/
+
+       Integer[] arrays = {1};
+
+       System.out.println(arrays.getClass().getClassLoader());
+       for(Integer i : arrays){
+           System.out.println(i.getClass().getClassLoader());
+       }
+       System.out.println(args.getClass().getClassLoader());
     }
 }
