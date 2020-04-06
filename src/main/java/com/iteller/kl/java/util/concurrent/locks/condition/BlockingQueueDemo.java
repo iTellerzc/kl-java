@@ -10,6 +10,9 @@ import java.util.concurrent.locks.ReentrantLock;
  * description:
  *
  * Object的监视器方法与Condition接口的对比
+ * 局限性
+ * 两种方式中的让线程等待和唤醒的方法能够执行的先决条件是：线程需要先获取锁
+ * 唤醒方法需要在等待方法之后调用，线程才能够被唤醒
     对比项	                                        Object 监视器方法	                    Condition
     前置条件	                                       获取对象的锁	            调用Lock.lock获取锁，调用Lock.newCondition()获取Condition对象
     调用方式	                                       直接调用，如：object.wait()	        直接调用，如：condition.await()
