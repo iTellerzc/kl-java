@@ -34,7 +34,7 @@ public class MyReentrantLockInterrupt {
                 System.out.println("lock seq:" +lock + ", currentThreadName:" + name);
                 if(lock == 1){
                     System.out.println("1-1,currentTime:" + new Date() + ",lock1 is locked before:" + lock1.isLocked() + ",held by current thread:" + name +":"+ lock1.isHeldByCurrentThread());
-                    lock1.lockInterruptibly();
+                    lock1.lockInterruptibly();//block
                     //lock1.lock();
                     System.out.println("1-2,currentTime:" + new Date() +",lock1 is locked after:" + lock1.isLocked() + ",held by current thread:" + name +":"+ lock1.isHeldByCurrentThread());
                     TimeUnit.SECONDS.sleep(sleep);
@@ -49,7 +49,7 @@ public class MyReentrantLockInterrupt {
                     System.out.println("2-2,currentTime:" + new Date() +",lock2 is locked after:" + lock2.isLocked() + ",held by current thread:" + name +":"+ lock2.isHeldByCurrentThread());
                     TimeUnit.SECONDS.sleep(sleep);
                     System.out.println("2-3,currentTime:" + new Date() +",lock1 is locked before:" + lock1.isLocked() + ",held by current thread:" + name +":"+ lock1.isHeldByCurrentThread());
-                    lock1.lockInterruptibly();
+                    lock1.lockInterruptibly();//block
                     //lock1.lock();
                     System.out.println("2-4,currentTime:" + new Date() +",lock1 is locked after:" + lock1.isLocked() + ",held by current thread:" + name +":"+ lock1.isHeldByCurrentThread());
                 }
