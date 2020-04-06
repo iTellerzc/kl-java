@@ -20,6 +20,6 @@ public class DisruptorEventHandler implements EventHandler<DisruptorEvent> {
             TimeUnit.SECONDS.sleep(8);
             throw new RuntimeException("hit 8 magic");
         }*/
-        LOGGER.info("event:{}, sequence:{}, endOfBatch:{}.", event, sequence, endOfBatch);
+        LOGGER.info("first consumer consume event:{}, sequence:{}, endOfBatch:{}.", event, sequence, endOfBatch);
     }
 }

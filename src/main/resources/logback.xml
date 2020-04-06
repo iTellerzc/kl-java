@@ -2,7 +2,7 @@
 <configuration debug="false" scan="true">
 
     <contextName>keep-learning</contextName>
-    <property name="log.path" value="/f/kl/logs/keep-learning.log"/>
+    <property name="log.path" value="./logs/keep-learning.log"/>
 
     <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>

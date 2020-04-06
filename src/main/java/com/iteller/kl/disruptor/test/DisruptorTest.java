@@ -4,6 +4,7 @@ import com.iteller.kl.disruptor.event.DisruptorEvent;
 import com.iteller.kl.disruptor.exception.DisruptorExceptionHandler;
 import com.iteller.kl.disruptor.factory.DisruptorEventFactory;
 import com.iteller.kl.disruptor.handler.DisruptorEventHandler;
+import com.iteller.kl.disruptor.handler.DisruptorEventHandler2;
 import com.lmax.disruptor.BusySpinWaitStrategy;
 import com.lmax.disruptor.EventTranslator;
 import com.lmax.disruptor.dsl.Disruptor;
@@ -19,7 +20,7 @@ import java.util.concurrent.ThreadFactory;
 public class DisruptorTest {
 
     public static void main(String[] args){
-        int ringBufferSize = 16; // must pow of 2
+        int ringBufferSize = 2; // must pow of 2
         Disruptor<DisruptorEvent> disruptor = new Disruptor<DisruptorEvent>(
                 new DisruptorEventFactory(),//事件工厂
                 ringBufferSize,//数组大小
@@ -33,13 +34,14 @@ public class DisruptorTest {
 
         disruptor.setDefaultExceptionHandler(new DisruptorExceptionHandler());//异常处理
 
-        disruptor.handleEventsWith(new DisruptorEventHandler());//事件消费
+        disruptor.handleEventsWith(new DisruptorEventHandler(), new DisruptorEventHandler2());//事件消费
 
         disruptor.start();
 
-        for(int i = 0; i < 100; i++){
+        for(int i = 0; i < 10; i++){
             disruptor.publishEvent(new EventTranslator<DisruptorEvent>() {//事件发布
                 public void translateTo(DisruptorEvent event, long sequence) {//事件传递
+                    System.out.println("seq:" + sequence);
                     event.setMsg("this is test msg.");
                     event.setMsg(event.getMsg() + ":" + sequence);
                 }
