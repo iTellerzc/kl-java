@@ -1,4 +1,4 @@
-package com.iteller.kl.java.util.concurrent.locks.semaphore;
+package com.iteller.kl.java.util.concurrent.semaphore;
 
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;

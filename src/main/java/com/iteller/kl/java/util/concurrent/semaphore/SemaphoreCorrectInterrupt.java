@@ -1,4 +1,4 @@
-package com.iteller.kl.java.util.concurrent.locks.semaphore;
+package com.iteller.kl.java.util.concurrent.semaphore;
 
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit;
  * date:2020/4/7 9:30
  * description:
  */
-public class SemaphoreCorrectInterruptWithTime {
+public class SemaphoreCorrectInterrupt {
 
     static Semaphore semaphore = new Semaphore(1);
 
@@ -23,15 +23,14 @@ public class SemaphoreCorrectInterruptWithTime {
             Thread currentThread = currentThread();
             boolean acquireSuccess = false;
             try {
-                System.out.println(System.currentTimeMillis() + ", " + currentThread.getName() + "尝试获取许可"+", 可以被获得的许可：" + semaphore.availablePermits());
                 //等待
-                acquireSuccess = semaphore.tryAcquire(1, TimeUnit.SECONDS);
-                if(acquireSuccess){
-                    System.out.println(System.currentTimeMillis() + ", " + currentThread.getName() + "成功获取许可"+", 可以被获得的许可：" + semaphore.availablePermits());
-                    TimeUnit.SECONDS.sleep(5);
-                }else{
-                    System.out.println(System.currentTimeMillis() + ", " + currentThread.getName() + "获取许可失败"+", 可以被获得的许可：" + semaphore.availablePermits());
-                }
+                semaphore.acquire();
+                acquireSuccess = true;
+                System.out.println(System.currentTimeMillis() + ", " + currentThread.getName() + "获取许可"+", 可以被获得的许可：" + semaphore.availablePermits());
+                //阻塞
+                TimeUnit.SECONDS.sleep(15);
+
+                System.out.println(System.currentTimeMillis() + ", " + currentThread.getName() + "运行结束");
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }finally {
@@ -40,6 +39,7 @@ public class SemaphoreCorrectInterruptWithTime {
                     semaphore.release();
                 }
             }
+            System.out.println(System.currentTimeMillis() +", "+currentThread.getName() +"释放后, 可以被获得的许可：" + semaphore.availablePermits());
         }
     }
 
@@ -55,7 +55,7 @@ public class SemaphoreCorrectInterruptWithTime {
         TimeUnit.SECONDS.sleep(1);
         t3.start();
 
-        //t3.interrupt();
-        //t2.interrupt();
+        t3.interrupt();
+        t2.interrupt();
     }
 }
