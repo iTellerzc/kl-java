@@ -10,7 +10,7 @@ import com.lmax.disruptor.EventTranslator;
 import com.lmax.disruptor.dsl.Disruptor;
 import com.lmax.disruptor.dsl.ProducerType;
 
-import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.*;
 
 /**
  * @author: 18060903(iTeller_zc)
@@ -18,6 +18,10 @@ import java.util.concurrent.ThreadFactory;
  * description:
  */
 public class DisruptorTest {
+
+    private static ExecutorService executorService = Executors.newFixedThreadPool(5);
+
+    private static CompletionService<String> completionService = new ExecutorCompletionService<String>(executorService);
 
     public static void main(String[] args){
         int ringBufferSize = 2; // must pow of 2
@@ -34,20 +38,26 @@ public class DisruptorTest {
 
         disruptor.setDefaultExceptionHandler(new DisruptorExceptionHandler());//异常处理
 
-        disruptor.handleEventsWith(new DisruptorEventHandler(), new DisruptorEventHandler2());//事件消费
+        disruptor.handleEventsWith(new DisruptorEventHandler(), new DisruptorEventHandler2(completionService));//事件消费
 
         disruptor.start();
 
         for(int i = 0; i < 10; i++){
+            long startTime = System.currentTimeMillis();
+            System.out.println("this is block:" + i + ", startTime:" + startTime);
             disruptor.publishEvent(new EventTranslator<DisruptorEvent>() {//事件发布
                 public void translateTo(DisruptorEvent event, long sequence) {//事件传递
-                    System.out.println("seq:" + sequence);
+                    //System.out.println("seq:" + sequence);
                     event.setMsg("this is test msg.");
                     event.setMsg(event.getMsg() + ":" + sequence);
                 }
             });
+            long endTime = System.currentTimeMillis();
+            System.out.println("this is another method invoke:" + i + ", cost:" + (endTime-startTime) + "ms");
         }
 
         disruptor.shutdown();
+
+        executorService.shutdown();
     }
 }
