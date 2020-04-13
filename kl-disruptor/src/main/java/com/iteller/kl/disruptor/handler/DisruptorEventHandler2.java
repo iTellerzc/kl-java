@@ -22,7 +22,7 @@ public class DisruptorEventHandler2 implements EventHandler<DisruptorEvent> {
         this.completionService = completionService;
     }
 
-    public void onEvent(DisruptorEvent event, long sequence, boolean endOfBatch) throws Exception {
+    public void onEvent(DisruptorEvent event, final long sequence, boolean endOfBatch) throws Exception {
         LOGGER.info("second consumer consume event:{}, sequence:{}, endOfBatch:{}.", event, sequence, endOfBatch);
         Future<String> futureTask = completionService.submit(new Callable<String>() {
             @Override
