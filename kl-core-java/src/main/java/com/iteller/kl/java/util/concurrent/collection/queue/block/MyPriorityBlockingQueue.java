@@ -1,4 +1,4 @@
-package com.iteller.kl.java.util.concurrent.queue;
+package com.iteller.kl.java.util.concurrent.collection.queue.block;
 
 import java.io.Serializable;
 import java.util.concurrent.PriorityBlockingQueue;

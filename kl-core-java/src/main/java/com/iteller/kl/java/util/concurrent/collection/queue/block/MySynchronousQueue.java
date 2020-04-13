@@ -1,4 +1,4 @@
-package com.iteller.kl.java.util.concurrent.queue;
+package com.iteller.kl.java.util.concurrent.collection.queue.block;
 
 import java.util.concurrent.SynchronousQueue;
 import java.util.concurrent.TimeUnit;

@@ -1,4 +1,4 @@
-package com.iteller.kl.java.util.concurrent.queue;
+package com.iteller.kl.java.util.concurrent.collection.queue.block;
 
 /**
  * @author: 18060903(iTeller_zc)
