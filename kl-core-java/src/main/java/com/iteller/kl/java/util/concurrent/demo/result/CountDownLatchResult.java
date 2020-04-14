@@ -1,4 +1,4 @@
-package com.iteller.kl.java.util.concurrent.result;
+package com.iteller.kl.java.util.concurrent.demo.result;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;

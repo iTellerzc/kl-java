@@ -1,4 +1,4 @@
-package com.iteller.kl.java.util.concurrent.result;
+package com.iteller.kl.java.util.concurrent.demo.result;
 
 /**
  * @author iTeller_zc
