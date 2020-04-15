@@ -17,7 +17,7 @@ import java.util.concurrent.TimeUnit;
  * date:2020/4/14
  * description:
  */
-public class BatchFutureResult {
+public class BatchFutureResultCallBack {
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {
 

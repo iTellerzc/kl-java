@@ -1,7 +1,6 @@
 package com.iteller.kl.java.util.concurrent.google;
 
 import com.google.common.util.concurrent.ListenableFuture;
-import com.google.common.util.concurrent.ListenableScheduledFuture;
 import com.google.common.util.concurrent.ListeningExecutorService;
 import com.google.common.util.concurrent.MoreExecutors;
 
@@ -15,7 +14,7 @@ import java.util.concurrent.TimeUnit;
  * date:2020/4/14
  * description:
  */
-public class MyMoreExecutors {
+public class MyMoreExecutors2 {
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {
 
