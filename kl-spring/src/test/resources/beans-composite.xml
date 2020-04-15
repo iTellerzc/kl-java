@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="car1" class="com.iteller.kl.spring.pojo.Car">
+        <property name="name" value="audi"></property>
+    </bean>
+
+    <bean id="car2" class="com.iteller.kl.spring.pojo.Car">
+        <property name="name" value="tesla"></property>
+    </bean>
+
+    <bean id="compositeObj" class="com.iteller.kl.spring.pojo.CompositeObj">
+        <property name="name" value="tracy"></property>
+        <property name="salary" value="1000"></property>
+        <property name="car" ref="car1"></property>
+        <property name="stringList">
+            <list>
+                <value>java</value>
+                <value>python</value>
+            </list>
+        </property>
+        <property name="carList">
+            <list>
+                <ref bean="car1"></ref>
+                <ref bean="car2"></ref>
+            </list>
+        </property>
+        <property name="stringSet">
+            <set>
+                <value>java</value>
+                <value>python</value>
+            </set>
+        </property>
+        <property name="carSet">
+            <set>
+                <ref bean="car1"></ref>
+                <ref bean="car2"></ref>
+            </set>
+        </property>
+        <property name="stringMap">
+            <map>
+                <entry key="java" value="java"></entry>
+                <entry key="python" value="python"></entry>
+            </map>
+        </property>
+        <property name="carMap">
+            <map>
+                <entry key="car1" value-ref="car1"></entry>
+                <entry key="car2" value-ref="car2"></entry>
+            </map>
+        </property>
+    </bean>
+</beans>

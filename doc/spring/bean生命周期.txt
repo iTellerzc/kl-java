@@ -1,4 +1,5 @@
 1.bean元信息配置阶段
+    api、xml、注解、properties四种方式声明bean,最后转化成api的方式
 2.bean元信息解析阶段
 3.bean注册到容器中
 4.BeanDefinition合并阶段
