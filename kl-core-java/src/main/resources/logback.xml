@@ -2,7 +2,7 @@
 <configuration debug="false" scan="true">
 
     <contextName>keep-learning-java</contextName>
-    <property name="log.path" value="./logs/keep-learning-java.log"/>
+    <property name="log.path" value="/logs/keep-learning-java.log"/>
 
     <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>

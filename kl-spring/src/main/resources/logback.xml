@@ -2,7 +2,7 @@
 <configuration debug="false" scan="true">
 
     <contextName>keep-learning-spring</contextName>
-    <property name="log.path" value="../logs/keep-learning-spring.log"/>
+    <property name="log.path" value="/logs/keep-learning-spring.log"/>
 
     <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
