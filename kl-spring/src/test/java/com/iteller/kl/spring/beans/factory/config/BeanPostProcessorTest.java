@@ -2,13 +2,17 @@ package com.iteller.kl.spring.beans.factory.config;
 
 import com.iteller.kl.spring.pojo.Car;
 import com.iteller.kl.spring.pojo.UserModel;
+import com.iteller.kl.spring.service.destroy.MyDestroyService;
+import com.iteller.kl.spring.service.destroy.MyDestroyServiceWithPreDestroy;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.MutablePropertyValues;
 import org.springframework.beans.PropertyValues;
+import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.beans.factory.config.InstantiationAwareBeanPostProcessor;
 import org.springframework.beans.factory.support.AbstractBeanDefinition;
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
+import org.springframework.context.annotation.CommonAnnotationBeanPostProcessor;
 import org.testng.annotations.Test;
 
 import java.beans.PropertyDescriptor;
@@ -109,5 +113,71 @@ public class BeanPostProcessorTest {
         for(String beanName : factory.getBeanDefinitionNames()){
             System.out.println(String.format("%s->%s", beanName, factory.getBean(beanName)));
         }
+    }
+
+    @Test
+    public void testAfterInitialization(){
+        DefaultListableBeanFactory factory = new DefaultListableBeanFactory();
+
+        factory.addBeanPostProcessor(new BeanPostProcessor() {
+            @Override
+            public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
+                System.out.println("invoke " + beanName + " after initialization.");
+                return bean;
+            }
+        });
+
+        factory.registerBeanDefinition("name", BeanDefinitionBuilder.genericBeanDefinition(String.class)
+        .addConstructorArgValue("iTeller").getBeanDefinition());
+
+        factory.registerBeanDefinition("lesson", BeanDefinitionBuilder.genericBeanDefinition(String.class)
+        .addConstructorArgValue("java").getBeanDefinition());
+
+        for(String beanName : factory.getBeanDefinitionNames()){
+            System.out.println(String.format("%s -> %s", beanName, factory.getBean(beanName)));
+        }
+    }
+
+    @Test
+    public void testDestroy(){
+        DefaultListableBeanFactory factory = new DefaultListableBeanFactory();
+
+        factory.addBeanPostProcessor(new MyDestructionAwareBeanProcessor());
+
+        factory.registerBeanDefinition("destroyService1",
+                BeanDefinitionBuilder.genericBeanDefinition(MyDestroyService.class).getBeanDefinition());
+        factory.registerBeanDefinition("destroyService2",
+                BeanDefinitionBuilder.genericBeanDefinition(MyDestroyService.class).getBeanDefinition());
+        factory.registerBeanDefinition("destroyService3",
+                BeanDefinitionBuilder.genericBeanDefinition(MyDestroyService.class).getBeanDefinition());
+
+        //初始化
+        factory.preInstantiateSingletons();
+
+        System.out.println("destroy service 1");
+        factory.destroySingleton("destroyService1");
+
+        System.out.println("destroy reset service");
+        factory.destroySingletons();
+    }
+
+    @Test
+    public void testDestroyWithPreDestroy(){
+        DefaultListableBeanFactory factory = new DefaultListableBeanFactory();
+
+        factory.addBeanPostProcessor(new MyDestructionAwareBeanProcessor());
+        factory.addBeanPostProcessor(new CommonAnnotationBeanPostProcessor());
+
+        factory.registerBeanDefinition("destroyService",
+                BeanDefinitionBuilder.genericBeanDefinition(MyDestroyServiceWithPreDestroy.class).getBeanDefinition());
+
+        //初始化
+        factory.preInstantiateSingletons();
+
+        factory.destroySingleton("destroyService1");// no exception
+        factory.destroySingleton("destroyService");
+
+        System.out.println("destroy reset service");
+        factory.destroySingletons();
     }
 }

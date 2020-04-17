@@ -15,16 +15,16 @@ public class MyBeanAware implements BeanNameAware, BeanClassLoaderAware, BeanFac
 
     @Override
     public void setBeanClassLoader(ClassLoader classLoader) {
-        System.out.println("注入classloader");
+        System.out.println("注入classloader:" + classLoader);
     }
 
     @Override
     public void setBeanFactory(BeanFactory beanFactory) throws BeansException {
-        System.out.println("注入beanfactory");
+        System.out.println("注入bean factory:" + beanFactory);
     }
 
     @Override
     public void setBeanName(String name) {
-        System.out.println("注入name");
+        System.out.println("注入bean name：" + name);
     }
 }
