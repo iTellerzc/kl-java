@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <bean id="myReplacer" class="com.iteller.kl.spring.service.replace.MyReplacer">
+        <replaced-method name="replace" replacer="myMethodReplacer">
+            <arg-type>String</arg-type>
+        </replaced-method>
+    </bean>
+
+    <bean id="myMethodReplacer" class="com.iteller.kl.spring.beans.factory.support.MyMethodReplacer"></bean>
+</beans>
