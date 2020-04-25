@@ -32,7 +32,6 @@ public class MyAutowiredTest {
         factory.registerBeanDefinition("person", BeanDefinitionBuilder.genericBeanDefinition(Person.class).getBeanDefinition());
 
         Person person = factory.getBean("person", Person.class);
-
         System.out.println(person);
     }
 }
