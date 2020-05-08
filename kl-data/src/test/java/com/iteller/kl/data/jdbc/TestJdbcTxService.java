@@ -1,4 +1,4 @@
-package com.iteller.kl.data.mybatis;
+package com.iteller.kl.data.jdbc;
 
 import com.iteller.kl.data.jdbc.service.JdbcTxService;
 import com.iteller.kl.data.model.Obj1;
