@@ -18,6 +18,8 @@
         <module>kl-test</module>
         <module>kl-data</module>
         <module>kl-model</module>
+        <module>kl-zookeeper</module>
+        <module>kl-kafka</module>
     </modules>
 
     <properties>
