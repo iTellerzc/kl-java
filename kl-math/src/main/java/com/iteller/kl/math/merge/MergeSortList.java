@@ -1,7 +1,6 @@
 package com.iteller.kl.math.merge;
 
-import org.apache.commons.compress.utils.Lists;
-
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -13,7 +12,7 @@ import java.util.List;
 public class MergeSortList {
 
     public List<Integer> mergeList(List<Integer> l1, List<Integer> l2){
-        List<Integer> result = Lists.newArrayList();
+        List<Integer> result = new ArrayList();
         int l1_index = 0;
         int l2_index = 0;
         while(l1_index < l1.size() && l2_index < l2.size()){
