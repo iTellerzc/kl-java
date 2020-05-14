@@ -20,4 +20,11 @@ public class BeforeAdvice {
     public void dataAccessCheckWithPlace(){
 
     }
+
+    /**
+     * xml config
+     */
+    public void monitor(Object service){
+
+    }
 }
