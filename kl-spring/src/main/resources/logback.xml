@@ -26,7 +26,12 @@
         <appender-ref ref="file"/>
     </root>
 
-    <logger name="org.springframework" level="info" additivity="false">
+    <logger name="org.springframework" level="debug" additivity="false">
+        <appender-ref ref="console"/>
+        <appender-ref ref="file"/>
+    </logger>
+
+    <logger name="org.aspectj" level="debug" additivity="false">
         <appender-ref ref="console"/>
         <appender-ref ref="file"/>
     </logger>

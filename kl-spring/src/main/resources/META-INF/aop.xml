@@ -1,0 +1,12 @@
+<!DOCTYPE aspectj PUBLIC "-//AspectJ//DTD//EN" "https://www.eclipse.org/aspectj/dtd/aspectj.dtd">
+<aspectj>
+    <weaver>
+        <!-- only weave classes in our application-specific packages -->
+        <include within="com.iteller.kl.spring.aop.sample.ltw.service.*"/>
+    </weaver>
+
+    <aspects>
+        <!-- weave in just this aspect -->
+        <aspect name="com.iteller.kl.spring.aop.sample.ltw.aspect.ProfilingAspect"/>
+    </aspects>
+</aspectj>
