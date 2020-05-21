@@ -20,6 +20,8 @@
         <module>kl-model</module>
         <module>kl-zookeeper</module>
         <module>kl-kafka</module>
+        <module>kl-spring-boot</module>
+        <module>kl-design-pattern</module>
     </modules>
 
     <properties>

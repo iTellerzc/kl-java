@@ -21,14 +21,12 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public final class LTWMain {
 
     public static void main(String[] args){
-        //ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("aop-ltw-config-test.xml", LTWMain.class);
-
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("aop/aop-ltw-config-test.xml");
 
         PrintService printService = context.getBean("printService", PrintService.class);
         printService.printName("iTeller_zc, this is load time weaver test!");
 
-        //no weaver
+        //no spring just same with upper
         PrintService newPrintService = new DefaultPrintService();
         newPrintService.printName("no load time weaver test!");
     }
