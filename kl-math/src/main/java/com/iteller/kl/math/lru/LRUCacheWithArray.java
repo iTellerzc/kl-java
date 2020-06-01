@@ -1,7 +1,7 @@
 package com.iteller.kl.math.lru;
 
 import java.io.*;
-import java.util.LinkedHashMap;
+import java.util.*;
 
 /**
  * @author: 18060903(iTeller_zc)
@@ -14,16 +14,18 @@ import java.util.LinkedHashMap;
  * 如果密钥不存在，则插入该组「密钥/数据值」。
  * 当缓存容量达到上限时,它应该在写入新数据之前删除最久未使用的数据值，从而为新的数据值留出空间。
  */
-public class LRUCache {
+public class LRUCacheWithArray {
 
-    private LinkedHashMap<Integer, Integer> cacheMap;
+    private Map<Integer, Integer> cacheMap;
 
     private int capacity;
 
+    private int[] ttlArray;
 
-    public LRUCache(int capacity){
-        this.cacheMap = new LinkedHashMap<>(capacity);
+    public LRUCacheWithArray(int capacity){
+        this.cacheMap = new HashMap<>(capacity);
         this.capacity = capacity;
+        ttlArray = new int[capacity];
     }
 
     public int get(int key){
@@ -32,8 +34,69 @@ public class LRUCache {
             return -1;
         }else{
             //trigger ttl
+            ttl(key);
             return value;
         }
+    }
+
+    private void ttl(Integer key) {
+        int index = ttlArrayIndex(key);
+        //found
+        if(index != -1){
+            if(realLength() == capacity){
+                //remove first
+                int[] leftHalf = Arrays.copyOfRange(ttlArray, 0, index);
+                int[] rightHalf = Arrays.copyOfRange(ttlArray, index + 1, capacity);
+                ttlArray = merge(leftHalf, rightHalf);
+                ttlArray[capacity-1] = key;
+            }else {
+                int[] leftHalf = Arrays.copyOfRange(ttlArray, 0, index);
+                int[] rightHalf = Arrays.copyOfRange(ttlArray, index+1, capacity);
+                ttlArray = merge(leftHalf, rightHalf);
+                ttlArray[realLength()] = key;
+            }
+        }else{
+            // not found
+            if(realLength() == capacity){
+                //remove first
+                int[] leftHalf =  Arrays.copyOfRange(ttlArray, 1, capacity);
+                int[] rightHalf = {0};
+                ttlArray = merge(leftHalf, rightHalf);
+                ttlArray[capacity-1] = key;
+            }else {
+                if(realLength() > 0){
+                    ttlArray[realLength()] = key;
+                }else{
+                    ttlArray[0] = key;
+                }
+            }
+        }
+    }
+
+    private int[] merge(int[] leftHalf, int[] rightHalf) {
+        int[] concatArray = new int[capacity];
+        System.arraycopy(leftHalf, 0, concatArray, 0, leftHalf.length);
+        System.arraycopy(rightHalf, 0, concatArray, leftHalf.length, rightHalf.length);
+        return concatArray;
+    }
+
+    private int ttlArrayIndex(Integer key) {
+        for(int index = 0; index < realLength(); index ++){
+            if(Integer.compare(ttlArray[index], key) == 0){
+                return index;
+            }
+        }
+        return -1;
+    }
+
+    private int realLength() {
+        int realLength = 0;
+        for(Integer data : ttlArray){
+            if(Integer.compare(data,0) != 0){
+                realLength++ ;
+            }
+        }
+        return realLength;
     }
 
     public void put(int key, int value){
@@ -41,11 +104,27 @@ public class LRUCache {
         if(cacheMap.size() == capacity){
             if (!cacheMap.containsKey(key)){
                 //sync clear map queue
+                removeTTLHeader();
             }
         }
 
         //put or recover
         cacheMap.put(key, value);
+
+        //ttl
+        ttl(key);
+
+        /*System.out.println("put key:" + key + ", value:" + value
+                + ", cacheMap:" + cacheMap + ", size:" + cacheMap.size()
+                + ", ttlArray:" + Arrays.toString(ttlArray) + ", ttlArray real size:" + realLength() + ".");*/
+    }
+
+    private void removeTTLHeader() {
+        Integer header = ttlArray[0];
+        if(Integer.compare(header, 0) != 0){
+            System.out.println("remove least recent use key:" + header + ", value:" + cacheMap.get(header));
+            cacheMap.remove(header);
+        }
     }
 
     public static void main(String[] args) throws IOException {
@@ -66,7 +145,7 @@ public class LRUCache {
         FileReader fileReader = null;
         BufferedReader br = null;
         try {
-            file = new File(LRUCache.class.getClassLoader().getResource("lru.txt").getFile());
+            file = new File(LRUCacheWithArray.class.getClassLoader().getResource("lru.txt").getFile());
             fileReader = new FileReader(file);
             br = new BufferedReader(fileReader);
             String firstLine = br.readLine();
@@ -79,7 +158,7 @@ public class LRUCache {
             //System.out.println(secondLine);
             String[] valueArray = secondLine.split("],");
             //System.out.println(Arrays.toString(valueArray));
-            LRUCache cache = new LRUCache(Integer.valueOf(valueArray[0].substring(1)));
+            LRUCacheWithArray cache = new LRUCacheWithArray(Integer.valueOf(valueArray[0].substring(1)));
             for(int i =1; i< keyArray.length - 1; i++){
                 if(keyArray[i].contains("get")){
                     cache.get(Integer.valueOf(valueArray[i].substring(1)));
@@ -110,7 +189,7 @@ public class LRUCache {
     }
 
     private static void test4() {
-        LRUCache cache = new LRUCache( 10 );
+        LRUCacheWithArray cache = new LRUCacheWithArray( 10 );
 
         cache.put(10, 13);
         cache.put(3, 17);
@@ -225,7 +304,7 @@ public class LRUCache {
     }
 
     private static void test3() {
-        LRUCache cache = new LRUCache( 2 );
+        LRUCacheWithArray cache = new LRUCacheWithArray( 2 );
 
         cache.get(2);
         cache.put(1, 1);
@@ -240,7 +319,7 @@ public class LRUCache {
     }
 
     private static void test2() {
-        LRUCache cache = new LRUCache( 2 );
+        LRUCacheWithArray cache = new LRUCacheWithArray( 2 );
 
         cache.put(1, 1);
         cache.put(2, 2);
@@ -254,7 +333,7 @@ public class LRUCache {
     }
 
     private static void test1() {
-        LRUCache cache = new LRUCache( 2 );
+        LRUCacheWithArray cache = new LRUCacheWithArray( 2 );
 
         cache.get(2);
 

@@ -109,7 +109,7 @@ public class LRUCacheWithQueue {
         FileReader fileReader = null;
         BufferedReader br = null;
         try {
-            file = new File(LRUCache.class.getClassLoader().getResource("lru.txt").getFile());
+            file = new File(LRUCacheWithArray.class.getClassLoader().getResource("lru.txt").getFile());
             fileReader = new FileReader(file);
             br = new BufferedReader(fileReader);
             String firstLine = br.readLine();
