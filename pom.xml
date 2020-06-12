@@ -14,13 +14,11 @@
         <module>kl-netty</module>
         <module>kl-math</module>
         <module>kl-flink</module>
-        <module>kl-spring</module>
         <module>kl-test</module>
         <module>kl-data</module>
         <module>kl-model</module>
         <module>kl-zookeeper</module>
         <module>kl-kafka</module>
-        <module>kl-spring-boot</module>
         <module>kl-design-pattern</module>
     </modules>
 
