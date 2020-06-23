@@ -34,7 +34,7 @@
         <logback.version>1.2.3</logback.version>
         <testng.version>6.14.3</testng.version>
         <aspectj.version>1.8.13</aspectj.version>
-        <spring.data.jdbc.version>2.0.0.RELEASE</spring.data.jdbc.version>
+        <spring.data.version>2.0.0.RELEASE</spring.data.version>
     </properties>
 
     <dependencies>
@@ -72,7 +72,13 @@
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-jdbc</artifactId>
-            <version>${spring.data.jdbc.version}</version>
+            <version>${spring.data.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-jpa</artifactId>
+            <version>${spring.data.version}</version>
         </dependency>
 
         <dependency>
@@ -108,6 +114,12 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-instrument</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
             <version>${spring.version}</version>
         </dependency>
 
