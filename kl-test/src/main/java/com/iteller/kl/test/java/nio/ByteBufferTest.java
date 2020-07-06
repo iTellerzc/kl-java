@@ -71,4 +71,76 @@ public class ByteBufferTest {
 
         System.out.println("magic:" + 0xCAFEBABE);
     }
+
+    @Test
+    public void testSlice(){
+        ByteBuffer bb = ByteBuffer.allocate(16);
+        bb.putInt(1);
+        bb.putInt(2);
+        System.out.println(bb.position());
+
+        ByteBuffer bs = bb.slice();
+        /*return new HeapByteBuffer(hb,
+                -1,
+                0,
+                this.remaining(),
+                this.remaining(),
+                this.position() + offset);*/
+
+        System.out.println(bs.position());
+        System.out.println(bs.limit());
+    }
+
+    @Test
+    public void testCompact(){
+        ByteBuffer bb = ByteBuffer.allocate(16);
+        bb.putInt(1);
+        bb.putInt(2);
+        System.out.println(bb.position());
+
+        ByteBuffer cb = bb.compact();//?
+        /*System.arraycopy(hb, ix(position()), hb, ix(0), remaining());
+        position(remaining());
+        limit(capacity());
+        discardMark();
+        return this;*/
+
+        System.out.println(cb.position());
+        System.out.println(cb.limit());
+    }
+
+    @Test
+    public void testDuplicate(){
+        ByteBuffer bb = ByteBuffer.allocate(16);
+        bb.putInt(1);
+        bb.putInt(2);
+
+        ByteBuffer bd = bb.duplicate();
+        /*return new HeapByteBuffer(hb,
+                this.markValue(),
+                this.position(),
+                this.limit(),
+                this.capacity(),
+                offset);*/
+
+        bd.putInt(10);
+
+        System.out.println(bb.getInt());
+        System.out.println(bd.getInt());
+
+        System.out.println(bb);
+        System.out.println(bd);
+    }
+
+    @Test
+    public void testAsReadOnlyBuffer(){
+        ByteBuffer bb = ByteBuffer.allocate(16);
+        bb.putInt(1);
+        bb.putInt(2);
+
+        //same as duplicate except read only HeapByteBufferR
+        ByteBuffer br = bb.asReadOnlyBuffer();
+        br.putInt(3); //throw exception
+
+    }
 }
