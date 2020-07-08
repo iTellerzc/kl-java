@@ -20,6 +20,7 @@
         <module>kl-zookeeper</module>
         <module>kl-kafka</module>
         <module>kl-design-pattern</module>
+        <module>kl-common</module>
     </modules>
 
     <properties>
