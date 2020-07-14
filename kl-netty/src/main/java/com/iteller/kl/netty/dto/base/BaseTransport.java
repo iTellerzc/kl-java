@@ -7,17 +7,23 @@ import java.io.Serializable;
  * date:2020/7/7 19:22
  * description:
  */
-public class NettyBaseDto implements Serializable{
+public class BaseTransport implements Serializable{
 
     private static final long serialVersionUID = 6373740936269254302L;
 
     /**
-     * @see  NettyBaseHeader
+     * @see  TransportHeader
      */
     private byte[] headers;
 
+    /**
+     * req/resp class
+     */
     private byte[] clazz;
 
+    /**
+     * req/resp
+     */
     private byte[] body;
 
     public byte[] getHeaders() {
@@ -43,4 +49,14 @@ public class NettyBaseDto implements Serializable{
     public void setBody(byte[] body) {
         this.body = body;
     }
+
+    public BaseTransport() {
+    }
+
+    public BaseTransport(byte[] headers, byte[] clazz, byte[] body) {
+        this.headers = headers;
+        this.clazz = clazz;
+        this.body = body;
+    }
+
 }

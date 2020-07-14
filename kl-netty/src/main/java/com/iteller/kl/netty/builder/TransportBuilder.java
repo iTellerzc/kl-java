@@ -1,8 +1,8 @@
 package com.iteller.kl.netty.builder;
 
-import com.iteller.kl.netty.dto.base.NettyBaseHeader;
-import com.iteller.kl.netty.dto.base.NettyReq;
-import com.iteller.kl.netty.dto.base.NettyResp;
+import com.iteller.kl.netty.dto.base.TransportHeader;
+import com.iteller.kl.netty.dto.base.ReqTransport;
+import com.iteller.kl.netty.dto.base.RespTransport;
 import com.iteller.kl.netty.exception.NettyException;
 
 /**
@@ -12,24 +12,21 @@ import com.iteller.kl.netty.exception.NettyException;
  */
 public class TransportBuilder {
 
-    public static NettyReq buildReq(NettyBaseHeader nettyBaseHeader, Object obj){
-        NettyReq nettyReq = new NettyReq(nettyBaseHeader, obj);
-        nettyReq.setReqTime(System.currentTimeMillis());
+    public static ReqTransport buildReq(TransportHeader transportHeader, Object obj){
+        ReqTransport nettyReq = new ReqTransport();
         return nettyReq;
     }
 
-    public static NettyResp buildRespWithError(NettyBaseHeader nettyBaseHeader, Object obj, NettyException nettyException){
-        NettyResp nettyResp = new NettyResp(nettyBaseHeader, obj);
+    public static RespTransport buildRespWithError(TransportHeader transportHeader, Object obj, NettyException nettyException){
+        RespTransport nettyResp = new RespTransport();
         if(nettyException != null){
             nettyResp.setNettyException(nettyException);
         }
-        nettyResp.setRespTime(System.currentTimeMillis());
         return nettyResp;
     }
 
-    public static NettyResp buildResp(NettyBaseHeader nettyBaseHeader, Object obj){
-        NettyResp nettyResp = new NettyResp(nettyBaseHeader, obj);
-        nettyResp.setRespTime(System.currentTimeMillis());
+    public static RespTransport buildResp(TransportHeader transportHeader, Object obj){
+        RespTransport nettyResp = new RespTransport();
         return nettyResp;
     }
 }

@@ -2,8 +2,8 @@ package com.iteller.kl.netty.handler.biz;
 
 import com.iteller.kl.common.utils.JSONUtil;
 import com.iteller.kl.netty.builder.TransportBuilder;
-import com.iteller.kl.netty.dto.base.NettyReq;
-import com.iteller.kl.netty.dto.base.NettyResp;
+import com.iteller.kl.netty.dto.base.ReqTransport;
+import com.iteller.kl.netty.dto.base.RespTransport;
 import com.iteller.kl.netty.dto.biz.HelloReq;
 import com.iteller.kl.netty.dto.biz.HelloResp;
 import com.iteller.kl.netty.handler.BizHandler;
@@ -20,11 +20,11 @@ public class HelloBizHandler implements BizHandler {
     private static final Logger LOGGER = LoggerFactory.getLogger(HelloBizHandler.class);
 
     @Override
-    public NettyResp bizHandle(NettyReq nettyReq) {
+    public RespTransport bizHandle(ReqTransport nettyReq) {
         HelloReq helloReq = (HelloReq) nettyReq.getReq();
         LOGGER.info("hello req:{}.", JSONUtil.toStr(helloReq));
         HelloResp helloResp = new HelloResp("hello resp!");
-        NettyResp nettyResp = TransportBuilder.buildResp(nettyReq.getNettyBaseHeader(), helloResp);
+        RespTransport nettyResp = TransportBuilder.buildResp(nettyReq.getNettyBaseHeader(), helloResp);
         return nettyResp;
     }
 }

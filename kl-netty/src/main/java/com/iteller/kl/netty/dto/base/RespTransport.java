@@ -7,7 +7,7 @@ import com.iteller.kl.netty.exception.NettyException;
  * date:2020/7/7 19:21
  * description:请求
  */
-public class NettyResp extends NettyBaseDto{
+public class RespTransport extends BaseTransport {
     private static final long serialVersionUID = 2709761496458960404L;
 
     /**
@@ -17,14 +17,8 @@ public class NettyResp extends NettyBaseDto{
 
     private NettyException nettyException;
 
-    public NettyResp(){
+    public RespTransport(){
 
-    }
-
-    public NettyResp(NettyBaseHeader nettyBaseHeader, Object obj){
-        super.setNettyBaseHeader(nettyBaseHeader);
-        super.setRespTime(System.currentTimeMillis());
-        this.resp = obj;
     }
 
     public NettyException getNettyException() {

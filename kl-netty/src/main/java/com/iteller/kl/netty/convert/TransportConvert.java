@@ -1,7 +1,7 @@
 package com.iteller.kl.netty.convert;
 
 import com.iteller.kl.netty.consts.TransportDirections;
-import com.iteller.kl.netty.dto.base.NettyBaseHeader;
+import com.iteller.kl.netty.dto.base.TransportHeader;
 
 /**
  * @author: 18060903(iTeller_zc)
@@ -12,11 +12,11 @@ public class TransportConvert {
 
     /**
      * 输出转换
-     * @param nettyBaseHeader
+     * @param transportHeader
      * @return
      */
-    public NettyBaseHeader convert2Resp(NettyBaseHeader nettyBaseHeader){
-        nettyBaseHeader.setType(TransportDirections.OUTPUT);
-        return nettyBaseHeader;
+    public TransportHeader convert2Resp(TransportHeader transportHeader){
+        transportHeader.setType(TransportDirections.OUTPUT);
+        return transportHeader;
     }
 }

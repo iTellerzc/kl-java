@@ -11,7 +11,7 @@ import java.io.Serializable;
  * date:2020/7/7 19:30
  * description:
  */
-public class NettyBaseHeader implements Serializable{
+public class TransportHeader implements Serializable{
 
     private static final long serialVersionUID = -8168470075689055453L;
 
@@ -43,11 +43,11 @@ public class NettyBaseHeader implements Serializable{
         this.version = version;
     }
 
-    public NettyBaseHeader(){
+    public TransportHeader(){
 
     }
 
-    public NettyBaseHeader(byte magic, byte type, byte version) {
+    public TransportHeader(byte magic, byte type, byte version) {
         this.magic = magic;
         this.type = type;
         this.version = version;

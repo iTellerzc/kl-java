@@ -1,7 +1,7 @@
 package com.iteller.kl.netty.handler.heartbeat;
 
-import com.iteller.kl.netty.dto.base.NettyReq;
-import com.iteller.kl.netty.dto.base.NettyResp;
+import com.iteller.kl.netty.dto.base.ReqTransport;
+import com.iteller.kl.netty.dto.base.RespTransport;
 import com.iteller.kl.netty.handler.BizHandler;
 
 /**
@@ -12,7 +12,7 @@ import com.iteller.kl.netty.handler.BizHandler;
 public class HeartBeatHandler implements BizHandler {
 
     @Override
-    public NettyResp bizHandle(NettyReq nettyReq) {
+    public RespTransport bizHandle(ReqTransport nettyReq) {
         return null;
     }
 }

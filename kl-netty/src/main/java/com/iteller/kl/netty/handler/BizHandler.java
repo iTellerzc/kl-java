@@ -1,7 +1,7 @@
 package com.iteller.kl.netty.handler;
 
-import com.iteller.kl.netty.dto.base.NettyReq;
-import com.iteller.kl.netty.dto.base.NettyResp;
+import com.iteller.kl.netty.dto.base.ReqTransport;
+import com.iteller.kl.netty.dto.base.RespTransport;
 
 /**
  * @author: 18060903(iTeller_zc)
@@ -10,5 +10,5 @@ import com.iteller.kl.netty.dto.base.NettyResp;
  */
 public interface BizHandler {
 
-    NettyResp bizHandle(NettyReq nettyReq);
+    RespTransport bizHandle(ReqTransport nettyReq);
 }

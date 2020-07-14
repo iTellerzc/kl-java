@@ -10,12 +10,12 @@ public class TransportDirections {
     /**
      * 请求输入
      */
-    public static final int INPUT = 1;
+    public static final byte INPUT = 0x01;
 
     /**
      * 响应输出
      */
-    public static final int OUTPUT = 2;
+    public static final byte OUTPUT = 0x02;
 
     private TransportDirections(){
 

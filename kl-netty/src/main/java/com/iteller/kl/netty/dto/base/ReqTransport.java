@@ -5,7 +5,7 @@ package com.iteller.kl.netty.dto.base;
  * date:2020/7/7 19:21
  * description:响应
  */
-public class NettyReq extends NettyBaseDto{
+public class ReqTransport extends BaseTransport {
 
     private static final long serialVersionUID = -7651142304529345908L;
 
@@ -20,14 +20,5 @@ public class NettyReq extends NettyBaseDto{
 
     public void setReq(Object req) {
         this.req = req;
-    }
-
-    public NettyReq(){
-    }
-
-    public NettyReq(NettyBaseHeader nettyBaseHeader, Object obj){
-        super.setNettyBaseHeader(nettyBaseHeader);
-        super.setReqTime(System.currentTimeMillis());
-        this.req = obj;
     }
 }

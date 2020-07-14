@@ -6,4 +6,10 @@ package com.iteller.kl.netty.consts;
  * description:
  */
 public class TransportMagic {
+
+    private TransportMagic(){
+
+    }
+
+    public static final byte MAGIC = 0x00;
 }

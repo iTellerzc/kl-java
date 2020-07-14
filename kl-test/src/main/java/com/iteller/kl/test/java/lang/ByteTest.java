@@ -23,4 +23,17 @@ public class ByteTest {
     public void test2UnsignedInt(){
         System.out.println(Byte.toUnsignedInt((byte)(32)));
     }
+
+    @Test
+    public void testBye2Int(){
+        byte temp = 0x0C;
+        System.out.println(temp);
+        temp = 0x000C;
+        System.out.println(temp);
+
+        System.out.println(0xCAFE);
+        System.out.println(0x00000C);
+    }
+
+
 }

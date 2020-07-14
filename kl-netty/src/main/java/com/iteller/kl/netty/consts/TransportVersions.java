@@ -11,5 +11,5 @@ public class TransportVersions {
 
     }
 
-    public static final String FIRST = "V1.0";
+    public static final byte FIRST = 0x01;
 }

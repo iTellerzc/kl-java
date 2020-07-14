@@ -5,5 +5,7 @@ package com.iteller.kl.netty.config;
  * date:2020/7/14 10:50
  * description:
  */
-public class NettyServerConfig {
+public class NettyServerConfig extends NettyConfig {
+
+
 }
