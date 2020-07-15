@@ -1,6 +1,6 @@
 package com.iteller.kl.netty.transport.pool;
 
-import com.iteller.kl.netty.transport.connection.NettyTransportConnection;
+import com.iteller.kl.netty.transport.connection.DefaultTransportConnection;
 
 /**
  * @author: 18060903(iTeller_zc)
@@ -9,11 +9,11 @@ import com.iteller.kl.netty.transport.connection.NettyTransportConnection;
  */
 public class TransportConnectionPool {
 
-    public NettyTransportConnection create(NettyTransportConnection nettyTransportConnection){
+    public DefaultTransportConnection create(DefaultTransportConnection nettyTransportConnection){
         return nettyTransportConnection;
     }
 
-    public NettyTransportConnection get(NettyTransportConnection nettyTransportConnection){
+    public DefaultTransportConnection get(DefaultTransportConnection nettyTransportConnection){
         return nettyTransportConnection;
     }
 }

@@ -1,7 +1,7 @@
 package com.iteller.kl.netty.starter.server;
 
-import com.iteller.kl.netty.exception.NettyException;
-import com.iteller.kl.netty.helper.NettyServerHelper;
+import com.iteller.kl.netty.exception.TransportException;
+import com.iteller.kl.netty.helper.TransportServerHelper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -10,25 +10,25 @@ import org.slf4j.LoggerFactory;
  * date:2020/7/7 19:18
  * description:
  */
-public class NettyServerMain {
+public class TransportServerMain {
 
     private static final String PORT = "8888";
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(NettyServerMain.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(TransportServerMain.class);
 
     public static void main(String[] args){
 
-        NettyServerHelper nettyServerHelper = new NettyServerHelper(Integer.valueOf(PORT));
+        TransportServerHelper transportServerHelper = new TransportServerHelper(Integer.valueOf(PORT));
         try {
-             boolean started = nettyServerHelper.start();
+             boolean started = transportServerHelper.start();
              if(started){
                  LOGGER.info("netty server main started successfully, port:{}!", PORT);
              }
         } catch (InterruptedException e) {
             LOGGER.error("netty server start meet error.", e);
             Thread.interrupted();
-            nettyServerHelper.stop();
-            throw new NettyException(e);
+            transportServerHelper.stop();
+            throw new TransportException(e);
         }
 
     }

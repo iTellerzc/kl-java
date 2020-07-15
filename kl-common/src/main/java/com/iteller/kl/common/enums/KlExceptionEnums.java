@@ -7,7 +7,11 @@ package com.iteller.kl.common.enums;
  */
 public enum  KlExceptionEnums {
     SYS_ERROR("kl.9999", "系统异常"),
-    JSON_EXCEPTION("kl.0001", "json异常")
+    JSON_EXCEPTION("kl.0001", "json异常"),
+    SERIALIZER_TYPE_NOT_SUPPORT("kl.0002", "序列化方式不支持"),
+    SERIALIZER_ERROR("kl.0003", "序列化失败"),
+    DESERIALIZER_ERROR("kl.0003", "反序列化失败")
+
     ;
 
     private String errorCode;

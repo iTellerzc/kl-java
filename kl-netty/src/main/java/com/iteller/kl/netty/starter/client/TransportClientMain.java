@@ -5,7 +5,7 @@ package com.iteller.kl.netty.starter.client;
  * date:2020/7/7 19:17
  * description:
  */
-public class NettyClientMain {
+public class TransportClientMain {
 
     public static void main(String[] args){
 

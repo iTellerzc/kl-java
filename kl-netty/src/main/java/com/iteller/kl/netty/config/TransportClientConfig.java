@@ -5,7 +5,7 @@ package com.iteller.kl.netty.config;
  * date:2020/7/14 10:50
  * description:
  */
-public class NettyClientConfig extends NettyConfig {
+public class TransportClientConfig extends TransportConfig {
 
     /**
      * 超时时间(ms)
@@ -20,11 +20,11 @@ public class NettyClientConfig extends NettyConfig {
         this.timeOut = timeOut;
     }
 
-    public NettyClientConfig() {
+    public TransportClientConfig() {
         super();
     }
 
-    public NettyClientConfig(long idle, int coreThreadSize, int maxThreadSize, int queueSize, long threadKeepAlive, long timeOut) {
+    public TransportClientConfig(long idle, int coreThreadSize, int maxThreadSize, int queueSize, long threadKeepAlive, long timeOut) {
         super(idle, coreThreadSize, maxThreadSize, queueSize, threadKeepAlive);
         this.timeOut = timeOut;
     }

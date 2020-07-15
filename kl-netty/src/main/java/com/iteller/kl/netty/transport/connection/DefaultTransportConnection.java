@@ -7,7 +7,7 @@ import io.netty.channel.Channel;
  * date:2020/7/8 10:11
  * description:
  */
-public class NettyTransportConnection extends TransportConnection{
+public class DefaultTransportConnection extends TransportConnection{
 
     private Channel channel;
 

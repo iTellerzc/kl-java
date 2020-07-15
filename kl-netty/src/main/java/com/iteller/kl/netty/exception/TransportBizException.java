@@ -7,25 +7,25 @@ import com.iteller.kl.common.enums.KlExceptionEnums;
  * date:2020/7/7 19:20
  * description:
  */
-public class NettyBizException extends NettyException{
+public class TransportBizException extends TransportException {
     private static final long serialVersionUID = 6645706036317318490L;
 
-    public NettyBizException() {
+    public TransportBizException() {
     }
 
-    public NettyBizException(KlExceptionEnums klExceptionEnums, Throwable cause) {
+    public TransportBizException(KlExceptionEnums klExceptionEnums, Throwable cause) {
         super(klExceptionEnums, cause);
     }
 
-    public NettyBizException(String message) {
+    public TransportBizException(String message) {
         super(message);
     }
 
-    public NettyBizException(String message, Throwable cause) {
+    public TransportBizException(String message, Throwable cause) {
         super(message, cause);
     }
 
-    public NettyBizException(Throwable cause) {
+    public TransportBizException(Throwable cause) {
         super(cause);
     }
 }

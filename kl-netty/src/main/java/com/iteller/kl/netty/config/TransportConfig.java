@@ -7,7 +7,7 @@ import java.util.concurrent.TimeUnit;
  * date:2020/7/14 10:49
  * description:
  */
-public class NettyConfig {
+public class TransportConfig {
 
     private long idle = 30*60*1000;
 
@@ -19,9 +19,9 @@ public class NettyConfig {
     private int queueSize = 100;
     private long threadKeepAlive = TimeUnit.SECONDS.toSeconds(60);
 
-    public NettyConfig(){}
+    public TransportConfig(){}
 
-    public NettyConfig(long idle, int coreThreadSize, int maxThreadSize, int queueSize, long threadKeepAlive) {
+    public TransportConfig(long idle, int coreThreadSize, int maxThreadSize, int queueSize, long threadKeepAlive) {
         this.idle = idle;
         this.coreThreadSize = coreThreadSize;
         this.maxThreadSize = maxThreadSize;

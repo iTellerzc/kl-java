@@ -1,6 +1,6 @@
 package com.iteller.kl.netty.dto.base;
 
-import com.iteller.kl.netty.exception.NettyException;
+import com.iteller.kl.netty.exception.TransportException;
 
 /**
  * @author: 18060903(iTeller_zc)
@@ -15,18 +15,18 @@ public class RespTransport extends BaseTransport {
      */
     private Object resp;
 
-    private NettyException nettyException;
+    private TransportException transportException;
 
     public RespTransport(){
 
     }
 
-    public NettyException getNettyException() {
-        return nettyException;
+    public TransportException getTransportException() {
+        return transportException;
     }
 
-    public void setNettyException(NettyException nettyException) {
-        this.nettyException = nettyException;
+    public void setTransportException(TransportException transportException) {
+        this.transportException = transportException;
     }
 
     public Object getResp() {

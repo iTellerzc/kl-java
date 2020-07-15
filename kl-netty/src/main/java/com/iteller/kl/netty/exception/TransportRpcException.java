@@ -7,25 +7,25 @@ import com.iteller.kl.common.enums.KlExceptionEnums;
  * date:2020/7/7 19:20
  * description:
  */
-public class NettyRpcException extends NettyException {
+public class TransportRpcException extends TransportException {
     private static final long serialVersionUID = 7512054791059084280L;
 
-    public NettyRpcException() {
+    public TransportRpcException() {
     }
 
-    public NettyRpcException(KlExceptionEnums klExceptionEnums, Throwable cause) {
+    public TransportRpcException(KlExceptionEnums klExceptionEnums, Throwable cause) {
         super(klExceptionEnums, cause);
     }
 
-    public NettyRpcException(String message) {
+    public TransportRpcException(String message) {
         super(message);
     }
 
-    public NettyRpcException(String message, Throwable cause) {
+    public TransportRpcException(String message, Throwable cause) {
         super(message, cause);
     }
 
-    public NettyRpcException(Throwable cause) {
+    public TransportRpcException(Throwable cause) {
         super(cause);
     }
 }

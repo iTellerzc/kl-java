@@ -8,25 +8,25 @@ import com.iteller.kl.common.exception.KlException;
  * date:2020/7/8 9:26
  * description:
  */
-public class NettyException extends KlException {
+public class TransportException extends KlException {
     private static final long serialVersionUID = 359438219440211060L;
 
-    public NettyException() {
+    public TransportException() {
     }
 
-    public NettyException(KlExceptionEnums klExceptionEnums, Throwable cause) {
+    public TransportException(KlExceptionEnums klExceptionEnums, Throwable cause) {
         super(klExceptionEnums, cause);
     }
 
-    public NettyException(String message) {
+    public TransportException(String message) {
         super(message);
     }
 
-    public NettyException(String message, Throwable cause) {
+    public TransportException(String message, Throwable cause) {
         super(message, cause);
     }
 
-    public NettyException(Throwable cause) {
+    public TransportException(Throwable cause) {
         super(cause);
     }
 }

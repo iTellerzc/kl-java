@@ -3,7 +3,7 @@ package com.iteller.kl.netty.builder;
 import com.iteller.kl.netty.dto.base.TransportHeader;
 import com.iteller.kl.netty.dto.base.ReqTransport;
 import com.iteller.kl.netty.dto.base.RespTransport;
-import com.iteller.kl.netty.exception.NettyException;
+import com.iteller.kl.netty.exception.TransportException;
 
 /**
  * @author: 18060903(iTeller_zc)
@@ -17,10 +17,10 @@ public class TransportBuilder {
         return nettyReq;
     }
 
-    public static RespTransport buildRespWithError(TransportHeader transportHeader, Object obj, NettyException nettyException){
+    public static RespTransport buildRespWithError(TransportHeader transportHeader, Object obj, TransportException transportException){
         RespTransport nettyResp = new RespTransport();
-        if(nettyException != null){
-            nettyResp.setNettyException(nettyException);
+        if(transportException != null){
+            nettyResp.setTransportException(transportException);
         }
         return nettyResp;
     }

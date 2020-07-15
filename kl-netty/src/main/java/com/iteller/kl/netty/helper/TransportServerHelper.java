@@ -14,7 +14,7 @@ import io.netty.channel.socket.SocketChannel;
  * date:2020/7/14 10:41
  * description:
  */
-public class NettyServerHelper {
+public class TransportServerHelper {
     private int port = 8888;
 
     private ServerBootstrap serverBootstrap;
@@ -25,7 +25,7 @@ public class NettyServerHelper {
 
     private ChannelFuture channelFuture;
 
-    public NettyServerHelper(int port){
+    public TransportServerHelper(int port){
         this.port = port;
     }
 
