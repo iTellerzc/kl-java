@@ -19,9 +19,9 @@
         <module>kl-data</module>
         <module>kl-model</module>
         <module>kl-zookeeper</module>
-        <module>kl-kafka</module>
         <module>kl-design-pattern</module>
         <module>kl-io</module>
+        <module>kl-mq</module>
     </modules>
 
     <properties>
