@@ -138,6 +138,7 @@ public class JacksonTest {
             jsonGenerator.writeNull();
 
             jsonGenerator.writeEndObject();
+            
         }
     }
 }
