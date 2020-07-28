@@ -138,7 +138,75 @@ public class JacksonTest {
             jsonGenerator.writeNull();
 
             jsonGenerator.writeEndObject();
-            
+
+        }
+    }
+
+    @Test
+    public void testAutoCloseFeature() throws IOException {
+        JsonFactory factory = new JsonFactory();
+
+        //auto close sample
+        try (JsonGenerator jsonGenerator = factory.createGenerator(System.out, JsonEncoding.UTF8)){
+            jsonGenerator.writeStartObject();
+            //do nothing not throw exception
+            //{"name":"iTeller","age":null
+            //jsonGenerator.disable(JsonGenerator.Feature.AUTO_CLOSE_JSON_CONTENT);
+            jsonGenerator.writeStringField("name", "iTeller");
+            jsonGenerator.writeFieldName("age");
+            jsonGenerator.writeNull();
+
+            jsonGenerator.writeEndObject();
+
+        }
+    }
+
+    @Test
+    public void testFlushFeature() throws IOException {
+        JsonFactory factory = new JsonFactory();
+
+        //auto close sample
+       /* try (JsonGenerator jsonGenerator = factory.createGenerator(System.out, JsonEncoding.UTF8)){
+            jsonGenerator.disable(JsonGenerator.Feature.FLUSH_PASSED_TO_STREAM);
+            jsonGenerator.writeStartObject();
+            jsonGenerator.writeStringField("name", "iTeller");
+            jsonGenerator.writeFieldName("age");
+            jsonGenerator.writeNull();
+
+            jsonGenerator.writeEndObject();
+
+            //jsonGenerator.close();
+            //jsonGenerator.flush();
+
+        }*/
+
+        JsonGenerator jsonGenerator = factory.createGenerator(System.out, JsonEncoding.UTF8);
+        jsonGenerator.disable(JsonGenerator.Feature.FLUSH_PASSED_TO_STREAM);
+        jsonGenerator.writeStartObject();
+        jsonGenerator.writeStringField("name", "iTeller");
+        jsonGenerator.writeFieldName("age");
+        jsonGenerator.writeNull();
+
+        jsonGenerator.writeEndObject();
+        //jsonGenerator.flush();
+        jsonGenerator.close();
+    }
+
+    @Test
+    public void testQuotaFeature() throws IOException {
+        JsonFactory factory = new JsonFactory();
+
+        //auto close sample
+       try (JsonGenerator jsonGenerator = factory.createGenerator(System.out, JsonEncoding.UTF8)){
+            jsonGenerator.disable(JsonGenerator.Feature.QUOTE_FIELD_NAMES);
+            //{name:"iTeller",age:null}
+            jsonGenerator.writeStartObject();
+            jsonGenerator.writeStringField("name", "iTeller");
+            jsonGenerator.writeFieldName("age");
+            jsonGenerator.writeNull();
+
+            jsonGenerator.writeEndObject();
+
         }
     }
 }
