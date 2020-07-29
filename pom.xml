@@ -22,6 +22,7 @@
         <module>kl-design-pattern</module>
         <module>kl-io</module>
         <module>kl-mq</module>
+        <module>kl-reactor</module>
     </modules>
 
     <properties>
