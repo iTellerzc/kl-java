@@ -1,0 +1,1 @@
+reactor-3:https://projectreactor.io/docs/core/release/reference/index.html#_latest_version_copyright_notice
