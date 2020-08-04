@@ -1,6 +1,7 @@
 package com.iteller.kl.spring.boot.dicts;
 
 import com.iteller.kl.spring.boot.base.BaseNgTest;
+import com.kl.spring.boot.dicts.MavenDictProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.testng.annotations.Test;
 

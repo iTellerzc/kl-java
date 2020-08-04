@@ -5,15 +5,15 @@
 
     <!--<aop:aspectj-autoproxy></aop:aspectj-autoproxy>-->
 
-    <bean id="personService" class="com.iteller.kl.spring.service.aop.DefaultPersonService"></bean>
+    <bean id="personService" class="com.kl.spring.service.aop.DefaultPersonService"></bean>
 
-    <bean id="profiler" class="com.iteller.kl.spring.aop.sample.person.SimpleProfiler"></bean>
+    <bean id="profiler" class="com.kl.spring.aop.sample.person.SimpleProfiler"></bean>
 
     <aop:config>
         <aop:aspect ref="profiler">
             <!--pointcut-->
             <aop:pointcut id="myPointcut"
-                 expression="execution(* com.iteller.kl.spring.service.aop.PersonService.getPerson(String, int)) and args(name, age)" />
+                 expression="execution(* com.kl.spring.service.aop.PersonService.getPerson(String, int)) and args(name, age)" />
             <!--advice-->
             <aop:around method="profile" pointcut-ref="myPointcut"></aop:around>
 

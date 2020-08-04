@@ -7,6 +7,6 @@
 
     <aspects>
         <!-- weave in just this aspect -->
-        <aspect name="com.iteller.kl.spring.aop.sample.ltw.aspect.ProfilingAspect"/>
+        <aspect name="com.kl.spring.aop.sample.ltw.aspect.ProfilingAspect"/>
     </aspects>
 </aspectj>

@@ -16,5 +16,5 @@
 
     </aop:config>
 
-    <bean id="myAspect" class="com.iteller.kl.spring.aop.sample.BeforeAdvice"></bean>
+    <bean id="myAspect" class="com.kl.spring.aop.sample.BeforeAdvice"></bean>
 </beans>

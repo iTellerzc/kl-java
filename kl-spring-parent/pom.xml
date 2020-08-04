@@ -15,13 +15,13 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>./kl-spring</module>
-        <module>./kl-spring-boot</module>
-        <module>./kl-spring-data</module>
-        <module>./kl-spring-mvc</module>
+        <module>kl-spring</module>
+        <module>kl-spring-boot</module>
+        <module>kl-spring-data</module>
+        <module>kl-spring-mvc</module>
     </modules>
 
-    <description>kl spring parent base</description>
+    <description>base kl spring parent</description>
 
     <properties>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>

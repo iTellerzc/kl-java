@@ -7,7 +7,7 @@
        http://www.springframework.org/schema/context
        http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <bean id="printService" class="com.iteller.kl.spring.aop.sample.ltw.service.DefaultPrintService"></bean>
+    <bean id="printService" class="com.kl.spring.aop.sample.ltw.service.DefaultPrintService"></bean>
 
     <!--weaver-class="org.springframework.instrument.classloading.ReflectiveLoadTimeWeaver"-->
     <context:load-time-weaver />

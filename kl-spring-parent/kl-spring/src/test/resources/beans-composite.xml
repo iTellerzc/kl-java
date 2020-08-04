@@ -3,15 +3,15 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="car1" class="com.iteller.kl.spring.pojo.Car">
+    <bean id="car1" class="com.kl.spring.pojo.Car">
         <property name="name" value="audi"></property>
     </bean>
 
-    <bean id="car2" class="com.iteller.kl.spring.pojo.Car">
+    <bean id="car2" class="com.kl.spring.pojo.Car">
         <property name="name" value="tesla"></property>
     </bean>
 
-    <bean id="compositeObj" class="com.iteller.kl.spring.pojo.CompositeObj">
+    <bean id="compositeObj" class="com.kl.spring.pojo.CompositeObj">
         <property name="name" value="tracy"></property>
         <property name="salary" value="1000"></property>
         <property name="car" ref="car1"></property>

@@ -11,7 +11,7 @@
 
     <aop:config>
         <aop:advisor
-                pointcut="com.iteller.kl.spring.aop.pointcut.share.SystemArchitecture.businessService()"
+                pointcut="com.kl.spring.aop.pointcut.share.SystemArchitecture.businessService()"
                 advice-ref="tx-advice"></aop:advisor>
     </aop:config>
 
