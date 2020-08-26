@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+option java_package="com.kl.grpc.sample";
+
+package grpcSample;
+
+service Greeter {
+    rpc sayHi(SampleReq) returns (SampleResp) {}
+}
+
+message SampleReq {
+    string content = 1;
+}
+
+message SampleResp {
+    string resp = 2;
+}
+
+

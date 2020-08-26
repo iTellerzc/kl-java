@@ -23,6 +23,7 @@
         <module>kl-io</module>
         <module>kl-mq</module>
         <module>kl-reactor</module>
+        <module>kl-grpc</module>
     </modules>
 
     <properties>
