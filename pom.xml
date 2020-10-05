@@ -11,15 +11,15 @@
     <modules>
         <module>kl-core-java</module>
         <module>kl-common</module>
+        <module>kl-design-pattern</module>
+        <module>kl-math</module>
         <module>kl-disruptor</module>
         <module>kl-rpc</module>
-        <module>kl-math</module>
         <module>kl-flink</module>
         <module>kl-test</module>
-        <module>kl-data</module>
         <module>kl-model</module>
+        <module>kl-data</module>
         <module>kl-zookeeper</module>
-        <module>kl-design-pattern</module>
         <module>kl-io</module>
         <module>kl-mq</module>
         <module>kl-reactor</module>
